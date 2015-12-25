@@ -4,6 +4,7 @@
 	<comment></comment>
 	<projects>
 		<project>CODEL_EJB</project>
+		<project>CODEL_Web_</project>
 		<project>CODEL_Web</project>
 	</projects>
 	<buildSpec>
