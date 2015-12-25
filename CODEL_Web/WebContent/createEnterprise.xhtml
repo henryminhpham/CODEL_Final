@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+<f:view locale="#{facesContext.externalContext.requestLocale}" />
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Insert or Edit Contact</title>
+</head>
+<body bottomMargin="0" leftMargin="0" topMargin="0" rightMargin="0">
+	<TABLE width="100%" border="2" cellSpacing="1" cellPadding="1" align="center">
+		<TR HEIGHT="100">
+			<TD Align="center" colspan="5">Logo + Banner Picture</TD>
+		</TR>
+		<TR HEIGHT="1">
+			<TD colspan="5" bgcolor="lavender"></TD>
+		</TR>
+		<TR HEIGHT="1000">
+			<TD vAlign="top" width="16%" bgcolor="CCCCFF">
+				<DIV id="leftTemplate"></DIV> <ui:insert name="left">
+					<ui:include src="leftTemplate.xhtml" />
+				</ui:insert>
+			</TD>
+			<TD bgcolor="lavender" width="1"></TD>
+			<TD vAlign="top" width="500">
+				<div align="center">
+					<font color="#0000CC"><h1>Enterprise Detail</h1></font>
+					<h:form>
+						<table>
+							<tr>
+								<td>Contact ID :</td>
+								<td><input type="text" readonly="readonly" name="contactId" /></td>
+							</tr>
+							<tr>
+								<td>First Name :</td>
+								<td><h:inputText type="text" name="firstname" value="#{createEnterprise.enterprise.firstName}" required="true" requiredMessage="#{msg['error.prenom']}" /></td>
+							</tr>
+							<tr>
+								<td>Last Name :</td>
+								<td><h:inputText type="text" name="lastname" value="#{createEnterprise.enterprise.lastName}" required="true" requiredMessage="#{msg['error.nom']}" /></td>
+							</tr>
+							<tr>
+								<td>Email :</td>
+								<td><h:inputText type="text" name="email" id="email" value="#{createEnterprise.enterprise.email}" required="true" requiredMessage="Please enter your email address." validatorMessage="#{msg['error.validator.formatEmail']}">
+										<f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+									</h:inputText> <h:message id="m_email" for="email" style="color:red" /></td>
+							</tr>
+							<tr>
+								<td>Street :</td>
+								<td><h:inputText type="text" name="street" value="#{createEnterprise.enterprise.adr.street}" required="true" requiredMessage="#{msg['error.street']}" /></td>
+							</tr>
+							<tr>
+								<td>City :</td>
+								<td><h:inputText type="text" name="city" value="#{createEnterprise.enterprise.adr.city}" required="true" requiredMessage="#{msg['error.city']}" /></td>
+							</tr>
+							<tr>
+								<td>Zip :</td>
+								<td><h:inputText type="text" name="zip" value="#{createEnterprise.enterprise.adr.zip}" required="true" requiredMessage="#{msg['error.zip']}" /></td>
+							</tr>
+							<tr>
+								<td>Country :</td>
+								<td><h:inputText type="text" name="country" value="#{createEnterprise.enterprise.adr.country}" required="true" requiredMessage="#{msg['error.country']}" /></td>
+							</tr>
+							<tr>
+								<td>SIRET Number :</td>
+								<td><h:inputText type="text" name="numSiret" value="#{createEnterprise.enterprise.numSiret}" required="true" requiredMessage="#{msg['error.country']}" /></td>
+							</tr>
+							<tr>
+								<td><br /> <h:commandButton type="submit" value="Add new Enterprise" action="#{createEnterprise.persist}" /></td>
+								<TD><br />
+								<h:button value="Reset" type="reset">
+									</h:button></TD>
+							</tr>
+
+						</table>
+					</h:form>
+				</div>
+			</TD>
+			<TD bgcolor="lavender" width="1"></TD>
+			<TD vAlign="top" width="150" bgcolor="CCCCFF">RIGHT <ui:insert name="left">
+					<ui:include src="rightTemplate.xhtml" />
+				</ui:insert>
+			</TD>
+		</TR>
+	</TABLE>
+</body>
+</html>

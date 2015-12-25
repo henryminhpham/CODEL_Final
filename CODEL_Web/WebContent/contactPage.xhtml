@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+<f:metadata>
+	<f:viewParam name="contactId" value="#{contactPage.contactId}" />
+	<f:event type="preRenderView" listener="#{contactPage.ensureInitialized}" />
+</f:metadata>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Insert or Edit Contact</title>
+</head>
+<body bottomMargin="0" leftMargin="0" topMargin="0" rightMargin="0">
+	<TABLE width="100%" border="2" cellSpacing="1" cellPadding="1" align="center">
+		<TR HEIGHT="100">
+			<TD Align="center" colspan="5">Logo + Banner Picture</TD>
+		</TR>
+		<TR HEIGHT="1">
+			<TD colspan="5" bgcolor="lavender"></TD>
+		</TR>
+		<TR HEIGHT="1000">
+			<TD vAlign="top" width="16%" bgcolor="CCCCFF"><ui:insert name="left">
+					<ui:include src="leftTemplate.xhtml" />
+				</ui:insert></TD>
+			<TD bgcolor="lavender" width="1"></TD>
+			<TD vAlign="top" width="500">
+				<div align="center">
+					<font color="#0000CC">
+						<h1>Contact Detail</h1>
+					</font>
+					<TABLE>
+						<tr>
+							<td><h:form>
+									<table>
+										<tr>
+											<td>#{msg['contact.userId']} :</td>
+											<td><input type="text" readonly="readonly" name="id" value="#{contactPage.contact.id}" /></td>
+										</tr>
+										<tr>
+											<td>#{msg['contact.prenom']} :</td>
+											<td><h:inputText required="true" id="firstname" type="text" name="firstname" value="#{contactPage.contact.firstName}" requiredMessage="#{msg['error.prenom']}" /></td>
+											<h:message for="firstname" styleClass="color:red" />
+										</tr>
+										<tr>
+											<td>#{msg['contact.nom']} :</td>
+											<td><h:inputText required="true" id="lastname" type="text" name="lastname" value="#{contactPage.contact.lastName}" requiredMessage="#{msg['error.nom']}" /></td>
+											<h:message for="lastname" styleClass="color:red" />
+										</tr>
+										<tr>
+											<td>#{msg['contact.email']} :</td>
+											<td><h:inputText value="#{contactPage.contact.email}" /></td>
+										</tr>
+										<tr>
+											<td>#{msg['adress.street']} :</td>
+											<td><h:inputText required="true" id="street" value="#{contactPage.contact.adr.street}" requiredMessage="#{msg['error.street']}" /></td>
+											<h:message for="street" styleClass="color:red" />
+										</tr>
+										<tr>
+											<td>#{msg['adress.city']} :</td>
+											<td><h:inputText required="true" id="city" value="#{contactPage.contact.adr.city}" requiredMessage="#{msg['error.city']}" /></td>
+											<h:message for="city" styleClass="color:red" />
+										</tr>
+										<tr>
+											<td>#{msg['adress.zip']} :</td>
+											<td><h:inputText required="true" id="zip" value="#{contactPage.contact.adr.zip}" requiredMessage="#{msg['error.zip']}" /></td>
+											<h:message for="zip" styleClass="color:red" />
+										</tr>
+										<tr>
+											<td>#{msg['adress.country']} :</td>
+											<td><h:inputText required="true" id="country" value="#{contactPage.contact.adr.country}" requiredMessage="#{msg['error.country']}" /></td>
+											<h:message for="country" styleClass="color:red" />
+										</tr>
+										<tr>
+											<td><input type="hidden" name="typePost" value="update" /></td>
+											<td>
+												<!--<h:commandButton type="submit" value="#{msg['form.update']}" action="" /> -->
+											</td>
+										</tr>
+										<tr>
+											<td colspan="2"><h3>Group</h3> <h:dataTable value="#{contactPage.getAllGroupsContainContact()}" var="group" border="1">
+													<h:column>
+														<f:facet name="header">
+															<h:outputText value="Group Name" />
+														</f:facet>
+														<h:outputText value="#{group.groupName}" />
+													</h:column>
+													<h:column>
+														<f:facet name="header">
+															<h:outputText value="Remove" />
+														</f:facet>
+														<h:commandLink value="Delete" action="#{contactPage.removeContactFromGroup(group)}" />
+													</h:column>
+													<h:column>
+														<f:facet name="header">More detail</f:facet>
+														<h:button outcome="/groupPage.xhtml" value="More detail">
+															<f:param name="groupId" value="#{group.id}" />
+														</h:button>
+													</h:column>
+												</h:dataTable></td>
+										</tr>
+									</table>
+								</h:form></td>
+							<td><f:view>
+									<h:form>
+										<h3>Phone Number</h3>
+										<h:panelGrid columns="2" border="0">
+											Enter Phone Number Type:		
+											<h:selectOneMenu value="#{contactPage.phoneNumber.phoneKind}">
+												<f:selectItem itemValue="" itemLabel="Select One" />
+												<f:selectItem itemValue="Home Phone" itemLabel="Home Phone" />
+												<f:selectItem itemValue="Mobile Phone" itemLabel="Mobile Phone" />
+												<f:selectItem itemValue="Work" itemLabel="Work" />
+											</h:selectOneMenu>
+											Enter Phone Number:
+											<h:inputText value="#{contactPage.phoneNumber.phoneNumber}" />
+										</h:panelGrid>
+										<br />
+										<h:commandButton value="Add Phone Number" action="#{contactPage.addPhoneNumberToContact()}" />
+										<br />
+										<br />
+										<h:dataTable value="#{contactPage.getPhoneNumbers()}" var="phone" border="1">
+											<h:column>
+												<f:facet name="header">
+													<h:outputText value="Phone Type" />
+												</f:facet>
+												<h:outputText value="#{phone.phoneKind}" />
+											</h:column>
+											<h:column>
+												<f:facet name="header">
+													<h:outputText value="Phone Number" />
+												</f:facet>
+												<h:outputText value="#{phone.phoneNumber}" />
+											</h:column>
+											<h:column>
+												<f:facet name="header">
+													<h:outputText value="Delete Student" />
+												</f:facet>
+												<h:commandLink value="Delete" action="#{contactPage.delPhoneNumber(phone)}" />
+											</h:column>
+										</h:dataTable>
+									</h:form>
+								</f:view></td>
+						</tr>
+					</TABLE>
+		</div>
+		</TD>
+		<TD bgcolor="lavender" width="1"></TD>
+		<TD vAlign="top" width="150" bgcolor="CCCCFF">RIGHT <ui:insert name="left">
+				<ui:include src="rightTemplate.xhtml" />
+			</ui:insert>
+		</TD>
+		</TR>
+	</TABLE>
+</body>
+</html>
