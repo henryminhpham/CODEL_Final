@@ -5,10 +5,6 @@
             <dependent-object/>
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="CODEL_Web_.war" deploy-path="/" handle="module:/resource/CODEL_Web_/CODEL_Web_">
-            <dependent-object/>
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <dependent-module archiveName="CODEL_Web.war" deploy-path="/" handle="module:/resource/CODEL_Web/CODEL_Web">
             <dependent-object/>
             <dependency-type>uses</dependency-type>
