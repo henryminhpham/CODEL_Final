@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#listContacts.xhtml"
+  PATH="/listContacts.xhtml" SHAPE="240,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#listContacts.xhtml:0" NAME="item"
+   PATH="/listContacts.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="deleteSuccess:#{listContacts.delContact}:#createContact.xhtml"
+    NAME="output" PATH="/createContact.xhtml"
+    TARGET="rules:#createContact.xhtml"
+    TITLE="#{listContacts.delContact}:deleteSuccess" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#createContact.xhtml"
+  PATH="/createContact.xhtml" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#createContact.xhtml:0" NAME="item"
+   PATH="/createContact.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="listContacts:#{createContact.persist}:#listContacts.xhtml"
+    NAME="output" PATH="/listContacts.xhtml"
+    TARGET="rules:#listContacts.xhtml"
+    TITLE="#{createContact.persist}:listContacts" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#createEnterprise.xhtml"
+  PATH="/createEnterprise.xhtml" SHAPE="32,129,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#createEnterprise.xhtml:0" NAME="item"
+   PATH="/createEnterprise.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="listContacts:#{createEnterprise.persist}:#listContacts.xhtml"
+    NAME="output" PATH="/listContacts.xhtml"
+    TARGET="rules:#listContacts.xhtml"
+    TITLE="#{createEnterprise.persist}:listContacts" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>

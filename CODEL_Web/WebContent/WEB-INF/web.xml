@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>TME1</display-name>
+  <welcome-file-list>
+    <welcome-file>listContacts.xhtml</welcome-file>
+  </welcome-file-list>
+  
+    <servlet>
+    <servlet-name>Faces Servlet</servlet-name>
+    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+ 
+  <!-- Map these files with JSF -->
+  <servlet-mapping>
+    <servlet-name>Faces Servlet</servlet-name>
+    <url-pattern>/faces/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Faces Servlet</servlet-name>
+    <url-pattern>*.jsf</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Faces Servlet</servlet-name>
+    <url-pattern>*.faces</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Faces Servlet</servlet-name>
+    <url-pattern>*.xhtml</url-pattern>
+  </servlet-mapping>
+  
+<!--   <servlet> -->
+<!--     <description></description> -->
+<!--     <display-name>ContactController</display-name> -->
+<!--     <servlet-name>ContactController</servlet-name> -->
+<!--     <servlet-class>com.controller.ContactController</servlet-class> -->
+<!--   </servlet> -->
+<!--   <servlet> -->
+<!--     <description></description> -->
+<!--     <display-name>MenuController</display-name> -->
+<!--     <servlet-name>MenuController</servlet-name> -->
+<!--     <servlet-class>com.controller.MenuController</servlet-class> -->
+<!--   </servlet> -->
+<!--   <servlet> -->
+<!--     <display-name>AddNewUserController</display-name> -->
+<!--     <servlet-name>AddNewUserController</servlet-name> -->
+<!--     <servlet-class>com.controller.AddNewUserController</servlet-class> -->
+<!--   </servlet> -->
+<!--   <servlet> -->
+<!--     <display-name>LoginController</display-name> -->
+<!--     <servlet-name>LoginController</servlet-name> -->
+<!--     <servlet-class>com.controller.LoginController</servlet-class> -->
+<!--   </servlet> -->
+<!--   <servlet> -->
+<!--     <display-name>AddNewGroupController</display-name> -->
+<!--     <servlet-name>AddNewGroupController</servlet-name> -->
+<!--     <servlet-class>com.controller.AddNewGroupController</servlet-class> -->
+<!--   </servlet> -->
+  
+  
+<!--   <servlet-mapping> -->
+<!--     <servlet-name>ContactController</servlet-name> -->
+<!--     <url-pattern>/ContactController</url-pattern> -->
+<!--   </servlet-mapping> -->
+<!--   <servlet-mapping> -->
+<!--     <servlet-name>AddNewUserController</servlet-name> -->
+<!--     <url-pattern>/AddNewUserController</url-pattern> -->
+<!--   </servlet-mapping> -->
+<!--   <servlet-mapping> -->
+<!--     <servlet-name>LoginController</servlet-name> -->
+<!--     <url-pattern>/LoginController</url-pattern> -->
+<!--   </servlet-mapping> -->
+<!--   <servlet-mapping> -->
+<!--     <servlet-name>MenuController</servlet-name> -->
+<!--     <url-pattern>/MenuController</url-pattern> -->
+<!--   </servlet-mapping> -->
+<!--   <servlet-mapping> -->
+<!--     <servlet-name>AddNewGroupController</servlet-name> -->
+<!--     <url-pattern>/AddNewGroupController</url-pattern> -->
+<!--   </servlet-mapping> -->
+</web-app>

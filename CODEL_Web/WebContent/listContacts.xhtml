@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:h="http://java.sun.com/jsf/html" 
+xmlns:f="http://java.sun.com/jsf/core" 
+xmlns:c="http://java.sun.com/jsp/jstl/core"
+xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>List all contact</title>
+</head>
+<body bottomMargin="0" leftMargin="0" topMargin="0" rightMargin="0">
+	<TABLE width="100%" border="2" cellSpacing="1" cellPadding="1" align="center">
+		<TR HEIGHT="100">
+			<TD Align="center" colspan="5">Logo + Banner Picture</TD>
+		</TR>
+		<TR HEIGHT="1">
+			<TD colspan="5" bgcolor="lavender"></TD>
+		</TR>
+		<TR HEIGHT="1000">
+			<TD vAlign="top" width="15%" bgcolor="CCCCFF">
+			<DIV id="leftTemplate">
+				</DIV>
+				<ui:insert name="left">
+					<ui:include src="leftTemplate.xhtml" />
+				</ui:insert></TD>
+			<TD bgcolor="lavender" width="1"></TD>
+			<TD vAlign="top" width="500">
+				<div align="center">
+					<font color="#0000CC"><h1>Contact Detail</h1></font>
+					<h:form>
+						<h:dataTable value="#{listContacts.getContacts()}" var="c" align="center" border="1" cellpadding="5" style="background-color: #CCCCFF;">
+							<h:column>
+								<f:facet name="header"> Contact Id</f:facet>
+								<h:outputText value="#{c.id}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header"> First Name</f:facet>
+								<h:outputText value="#{c.firstName}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header"> Last Name</f:facet>
+								<h:outputText value="#{c.lastName}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header"> Email</f:facet>
+								<h:outputText value="#{c.email}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header"> Contact Type</f:facet>
+								<h:outputText value="#{c.getContactType()}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header"> Action</f:facet>
+								<h:commandButton value="Delete" type="submit" action="#{listContacts.delContact(c)}">
+								</h:commandButton>
+							</h:column>
+							<h:column>
+								<f:facet name="header"> Action</f:facet>
+								<h:button outcome="/contactPage.xhtml" value="More detail">
+									<f:param name="contactId" value="#{c.id}"/>
+								</h:button>
+							</h:column>
+						</h:dataTable>
+					</h:form>
+				</div>
+			</TD>
+			<TD bgcolor="lavender" width="1"></TD>
+			<TD vAlign="top" width="150" bgcolor="CCCCFF"><ui:insert name="left">
+					<ui:include src="rightTemplate.xhtml" />
+				</ui:insert></TD>
+		</TR>
+	</TABLE>
+</body>
+</html>
