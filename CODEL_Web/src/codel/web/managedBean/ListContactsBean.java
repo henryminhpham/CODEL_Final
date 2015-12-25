@@ -14,8 +14,8 @@ import codel.jpa.Contact;
 public class ListContactsBean {
 	@EJB
 	private ContactServiceLocal ejb;
-
-	private List<Contact> contacts;
+	private List<Contact> contacts = null;
+	
 
 	public List<Contact> getContacts() {
 		if (contacts == null)
@@ -23,6 +23,11 @@ public class ListContactsBean {
 		return contacts;
 	}
 
+	public List<Contact> getAllContacts() {
+		this.contacts = ejb.getAllContacts();
+		return this.contacts;
+	}
+	
 	public String delContact(Contact c) {
 		if (ejb.delContact(c.getId())) {
 			contacts.remove(c);
